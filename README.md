@@ -5,14 +5,6 @@ This repository contains miscellaneous code, that has been used for processing o
 Some of it may be useful to others, some of it may be to specific to be of direct use,
 but may provide an example of how to do something.
 
-## R
-
-* `audio-entropy`
-  * `audio_entropy.r` audio entropy calculator from wav files
-* `csv-reformat`
-  * `reformat_csv_in_dir.r` function to reformat all csv files in directory and rename output files
-  * `csv_reformat.r` function to reformat a csv file, see source for description
-
 ## Go
 
 * `rollingavg.go` rolling average calculator
@@ -26,6 +18,14 @@ but may provide an example of how to do something.
 ## Python
 
 * `fasta2genes.py` extract genes from fasta file(s) and write to gene files
+
+## R
+
+* `audio-entropy`
+  * `audio_entropy.r` audio entropy calculator from wav files
+* `csv-reformat`
+  * `reformat_csv_in_dir.r` function to reformat all csv files in directory and rename output files
+  * `csv_reformat.r` function to reformat a csv file, see source for description
 
 ## Shell
 
