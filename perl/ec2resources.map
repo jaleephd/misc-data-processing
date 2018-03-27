@@ -1,0 +1,8 @@
+# instance cpus gpus GB ECU MPI
+c1.medium   2   0   1.7   5   n
+m3.xlarge   4   0    15  13   n
+c1.xlarge   8   0     7  20   n
+m3.2xlarge  8   0    30  26   n
+cg1.4xlarge 16  2   22.5 33.5 y
+cc2.8xlarge 32  0   60.5 88   y
+cr1.8xlarge 32  0   244  88   y
