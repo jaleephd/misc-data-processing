@@ -18,6 +18,11 @@ but may provide an example of how to do something.
 * `rollingavg.go` rolling average calculator
 * `test.csv` test CSV for use with `rollingavg.go`
 
+## Perl
+
+* `ec2resources.map` example resource map for use with `pbs_usage.pl`
+* `pbs_usage.pl` extract information from PBS and module logs and create usage report
+
 ## Python
 
 * `fasta2genes.py` extract genes from fasta file(s) and write to gene files
