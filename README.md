@@ -18,6 +18,7 @@ but may provide an example of how to do something.
 ## Python
 
 * `fasta2genes.py` extract genes from fasta file(s) and write to gene files
+* `csv2sqlite.py` converts a CSV file to an Sqlite3 database
 
 ## R
 
