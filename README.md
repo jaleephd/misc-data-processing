@@ -2,7 +2,7 @@
 
 This repository contains miscellaneous code, that has been used for processing or converting data.
 
-Some of it may be useful to others, some of it may be to specific to be of direct use,
+Some of it may be useful to others, some of it may be too specific to be of direct use,
 but may provide an example of how to do something.
 
 ## Go
@@ -27,6 +27,7 @@ but may provide an example of how to do something.
 * `csv-reformat`
   * `reformat_csv_in_dir.r` function to reformat all csv files in directory and rename output files
   * `csv_reformat.r` function to reformat a csv file, see source for description
+* `civic_cancer_genes.Rmd` extract gene-mutations and their cancer type from a JSON-based Civic database, and save to a CSV file.
 
 ## Shell
 
