@@ -1,0 +1,72 @@
+---
+title: "Civic Database Cancer Genes"
+author: "jl"
+date: "19/11/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Outline
+
+This code extracts genes with their mutations and cancer types from a Civic JSON format database, and saves the results to a CSV file.
+
+### R Packages Required
+
+There are a few packages that need to be installed to run the R code within this document. These are primarily in or adjacent to the `tidyverse` set of [packages](https://www.tidyverse.org/packages/) and consist of the following:
+
+* The `tidyverse` set of packages;
+* The `jsonlite` package for `JSON` format data;
+* The `knitr` package for report generation.
+
+Each of these can be installed with `install.packages("<name_of_package>")` at the `R` console, or via RStudio's `Tools` menu with `Install Packages`.
+
+In all of the following `R` code snippets, it is implied that the `tidyverse` library has been loaded. For clarity this is done here, rather than invisibly in the setup chunk, with:
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+Other libraries that are used in only a few code chunks, are explicitly loaded in those chunks for clarity.
+
+# Process Civic Database
+
+## Load Civic Database from local JSON file
+
+```{r, eval=FALSE}
+library(jsonlite)
+
+fname <- 'db/civic.json'
+cat("reading from JSON file: ", fname, "\n")
+rawj <- fromJSON(fname)
+
+# extract just the variants[] as a dataframe
+variants <- rawj$variants
+```
+
+## Extract nested data into dataframe
+
+```{r}
+cancer_gene_types <- variants %>%
+  # we want the gene, mutation and the evidence_items
+  select(entrez_name, name, evidence_items) %>%
+  # note that name NEEDS to be renamed prior to unnest
+  # due to the presence of 'name' field within the nested evidence_items
+  rename(gene=entrez_name, mutation=name) %>%
+  # we use evidence_items: disease, evidence_level, evidence_direction
+  unnest_wider(evidence_items) %>%
+  # only want disease: report_type
+  hoist(disease, cancer_type="report_type") %>%
+  # just keep the fields we want for the CSV
+  select(gene, mutation, cancer_type, evidence_level, evidence_direction) %>%
+  # these columns have the same number of elements - unnest into rows
+  unnest(c(cancer_type, evidence_level, evidence_direction))
+```
+
+## output dataframe to csv file
+
+```{r}
+write_csv(cancer_gene_types, "genes_cancers_list.csv")
+```
